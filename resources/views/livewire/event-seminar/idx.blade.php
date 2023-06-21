@@ -1,8 +1,8 @@
 @section('content')
 <div>
-    <h1>Event seminar</h1>
-    <table class="table">
-        <thead class="thead-dark">
+    <h1>Event Seminar</h1>
+    <table class="table table-striped">
+        <thead>
             <tr>
                 <th scope="col">Event Name</th>
                 <th scope="col">Event Date</th>
@@ -14,10 +14,12 @@
         <tbody>
             @foreach($event_id as $id)
             <tr>
-                <td>{{ $id->event_id }}</td>
-                <td>{{ $id->event_date }}</td>
-                <td>{{ $id->application_deadline }}</td>
-                <td>{{ $id->draft_deadline }}</td>
+                <td>{{ $id->event_id }}
+                    <br>EE-Seminar {{ date('j F Y', strtotime($id->event_date)) }}
+                </td>
+                <td>{{ date('l, j F Y H:i', strtotime($id->event_date))}}</td>
+                <td>{{ date('l, j F Y H:i', strtotime($id->application_deadline)) }}</td>
+                <td>{{ date('l, j F Y H:i', strtotime($id->draft_deadline)) }}</td>
                 <td>{{ $id->quota }}</td>
             </tr>
             @endforeach
